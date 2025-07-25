@@ -10,16 +10,22 @@ def check_age(user_age, age_restriction):
     # TODO: ถ้า age_restriction เป็น 'G' ให้ผ่านเลย
     # ถ้าไม่ใช่ ให้ดึงเลขอายุขั้นต่ำมาเปรียบเทียบกับ user_age
 
-    if age_restriction == G :
-        print("your passed!")
-    elif user_age > age_restriction :
-        
-        
+    if (age_restriction == "G") :
+        return True
+    elif (user_age > int(age_restriction)) :
+        return True
+    else :
+        return False
 
 # ฟังก์ชันคำนวณราคาตั๋วโดยขึ้นกับประเภทหนัง
 def calculate_price(base_price, genre):
     # TODO: ถ้า genre เป็น 'Action' บวกเพิ่ม 50 บาท
     # ถ้าไม่ใช่ คืนราคาเดิม
+
+    if (genre == "Action") :
+        return base_price+50
+    else :
+        return base_price
 
 # ฟังก์ชันสำหรับการซื้อบัตรชมหนัง
 def buy_ticket(movie_list):
@@ -32,6 +38,14 @@ def buy_ticket(movie_list):
     # 5. ให้ผู้ใช้เลือกเสียงพากย์ (1 = พากย์ไทย, 2 = Soundtrack)
     # 6. คำนวณราคาตั๋วโดยใช้ calculate_price
     # 7. แสดงผลการซื้อบัตร พร้อมชื่อหนัง, เสียงที่เลือก, ราคาตั๋ว
+
+    ticket_number = int(input("ticket : "))
+    movie = movie_list[ticket_number-1]
+    print(movie)
+    user_age = int(input("your age : "))
+    check = check_age(user_age, movie ["age_restriction"])
+
+
 
 def main():
     # TODO: สร้างรายการหนังเป็น list ของ dict โดยเก็บข้อมูล movie_name, ticket_price, genre, age_restriction
